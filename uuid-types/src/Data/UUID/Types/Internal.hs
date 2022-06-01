@@ -631,13 +631,13 @@ unsafeShiftL = shiftL
 #endif
 
 #if __GLASGOW_HASKELL__ >=800
-deriving instance Lift UUID
+-- deriving instance Lift UUID
 #else
-instance Lift UUID where
-    lift (UUID w1 w2) = varE fromWords64Name `appE` liftW64 w1 `appE` liftW64 w2
-      where
-        fromWords64Name = mkNameG_v currentPackageKey "Data.UUID.Types.Internal" "fromWords64"
-        liftW64 x = return (LitE (IntegerL (fromIntegral x)))
+-- instance Lift UUID where
+--     lift (UUID w1 w2) = varE fromWords64Name `appE` liftW64 w1 `appE` liftW64 w2
+--       where
+--         fromWords64Name = mkNameG_v currentPackageKey "Data.UUID.Types.Internal" "fromWords64"
+--         liftW64 x = return (LitE (IntegerL (fromIntegral x)))
 
 currentPackageKey :: String
 #ifdef CURRENT_PACKAGE_KEY
